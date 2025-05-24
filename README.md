@@ -1,8 +1,8 @@
-# File_Upload_Vulnerabilities-playground
+# File Upload Vulnerabilities-playground
 
 [![GitHub stars](https://img.shields.io/github/stars/JalinWu/File_Upload_Vulnerabilities-playground)](https://github.com/JalinWu/File_Upload_Vulnerabilities-playground/stargazers) ![GitHub All Releases](https://img.shields.io/github/downloads/JalinWu/File_Upload_Vulnerabilities-playground/total)
 
-It's a teaching material for practicing SQL injection, which is based on Node.js and SQLite. Have fun and enjoy it.
+It's a teaching material for practicing File Upload Vulnerabilities, which is based on Node.js. Have fun and enjoy it.
 
 ## Screenshots
 
