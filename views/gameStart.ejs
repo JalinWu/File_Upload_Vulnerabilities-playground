@@ -1,0 +1,75 @@
+<style>
+    .card-update-avatar {
+        margin: -30px auto 0;
+        position: relative;
+        left: 40px;
+    }
+
+    #editProfileImg {
+        background-color: dimgray;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <a href="#">
+                        <img id="profileImg" class="img" src="/img/faces/marc.jpg" alt="Profile Image" />
+                    </a>
+                </div>
+                <div class="card-update-avatar">
+                    <button id="editProfileImg" type="submit" class="btn btn-sm btn-round btn-just-icon" onclick="selectFile()">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <input type="file" id="fileInput" style="display: none;" onchange="uploadFile(event)">
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category">Developer</h6>
+                    <h4 class="card-title">Andy</h4>
+                    <p class="card-description">
+                        I’m passionate about learning new technologies, especially in the fields of AI and fintech.
+                        In my free time, I enjoy exploring investment strategies and using code to support trading decisions.
+                    </p>
+                    <!-- <a href="#pablo" class="btn btn-primary btn-round">Follow</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function selectFile() {
+        document.getElementById("fileInput").click();
+    }
+
+    function uploadFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        fetch("/upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.filename) {
+                // Update the profile image
+                document.getElementById("profileImg").src = `/uploads/${data.filename}`;
+                document.getElementById("avatarImg").src = `/uploads/${data.filename}`;
+            }
+
+            setTimeout(() => {
+                alert(data.message);
+            }, 100);
+        })
+        .catch(error => console.error("Upload Error:", error));
+    }
+</script>
