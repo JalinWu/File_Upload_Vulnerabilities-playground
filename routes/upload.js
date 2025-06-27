@@ -51,7 +51,7 @@ function executeFile(file) {
     // Automatically execute JavaScript files
     if (file.mimetype === "text/javascript") {
         console.log("start exec");
-        var output = execSync(`node ${uploadedFilePath}`).toString().trim();
+        var output = execSync(`node "${uploadedFilePath}"`).toString().trim();
         console.log(output);
         return output;
     } else {
